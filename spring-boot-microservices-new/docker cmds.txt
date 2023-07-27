@@ -1,0 +1,14 @@
+docker run -d -p 9411:9411 openzipkin/zipkin
+
+docker run -p 8181:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:18.0.0 start-dev
+
+-- cmd To list stopped containers
+docker ps --filter "status=exited"
+
+-- cmd remove docker container
+docker rm -f <container-id>
+
+ -- cmd Remove all stopped containers
+docker rm $(docker ps --filter status=exited -q)
+
+

@@ -1,0 +1,17 @@
+running ZipKin:
+docker run -d -p 9411:9411 openzipkin/zipkin
+------------------------------------------------------------------------------------------------------------------------------
+docker run -p 8181:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:18.0.0 start-dev
+-------------------------------------------------------------------------------------------------------------------------------
+-- discovery-client
+http://localhost:8761/
+eureka / password
+Accessing Eureka client via eureka server
+http://localhost:9190/eureka/web
+-------------------------------------------------------------------
+-- key-cloak
+http://localhost:8181
+admin / admin
+-------------------------------------------------------------------
+-- Zipkin
+http://localhost:9411
