@@ -1,0 +1,82 @@
+Spring Cloud Sleuth is a library that can be used to integrate with a Spring Boot application to provide distributed tracing solutions
+which include:
+
+1. Assigning a unique trace id to every request to correlate logs between services.
+2. Adding a span id that represents work done in an individual service.
+3. Sending traces to a distributed tracing system for detailed visualization and analysis.
+Trace ID: Is an ID that is assigned to the whole journey of a request.It remains the same across all the services for a particular request journey.
+
+Span ID: Is an ID that is assigned to a particular unit of work, such as an HTTP request handled by a service, a database query, etc. It is unique for each operation and can change as the request traverses through different services.
+
+To add Spring Cloud Sleuth to your Spring Boot project, you can add the following dependency:
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-sleuth</artifactId>
+</dependency>
+
+-------------------------------------------------------------------------------------
+
+Explanation:
+2021-07-29 12:34:56.789  INFO [myapp,5994471e1738d7f2,5994471e1738d7f2,true] 1 --- [nio-8080-exec-1] c.e.demo.MyRestController     : Hello from MyRestController
+In this log entry:
+myapp is the name of the application.
+5994471e1738d7f2 is the Trace ID.
+5994471e1738d7f2 is the Span ID.
+true means the span will be exported to a remote service for further analysis.
+By default, Sleuth does not export these traces to any backend, and they are only visible in the logs.
+If you want to visualize these traces, you might want to consider exporting the traces to a system like Zipkin. To do that, you would need to add a Zipkin starter to your project and configure the location of your Zipkin server.
+--------------------------------------------------------------------------------------------------------------------------
+Custom Span Id Implementation:
+ field: private final Tracer tracer;
+        -->
+        Span inventoryServiceLookup = tracer.nextSpan().name("InventoryServiceLookup");
+        try (Tracer.SpanInScope spanInScope = tracer.withSpan(inventoryServiceLookup.start())) {
+             // Call Inventory Service, and place order if product is in stock
+                       InventoryResponse[] inventoryResponseArray = webClientBuilder.build().get()
+                               .uri("http://inventory-service/api/inventory",
+                                       uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
+                               .retrieve()
+                               .bodyToMono(InventoryResponse[].class)
+                               .block();
+
+                       boolean allProductsInStock = Arrays.stream(inventoryResponseArray)
+                               .allMatch(InventoryResponse::isInStock);
+
+                       if (allProductsInStock) {
+                           //Save Order to Repository ---
+                           orderRepository.save(order);
+                           //Send message to kafka topics --
+                           kafkaTemplate.send("notification-topic", new OrderPlacedEvent(order.getOrderNumber())) ;
+                           //
+                           streamBridge.send("notificationEventSupplier-out-0",
+                                   MessageBuilder.withPayload(new OrderDto(order.getOrderNumber())).build());
+                           return "Order Placed Successfully";
+                       } else {
+                           throw new IllegalArgumentException("Product is not in stock, please try again later");
+                       }
+                   } finally {
+                       inventoryServiceLookup.end();
+                   }
+        }
+
+        This code is using the Spring Cloud Sleuth library to create a new span named "InventoryServiceLookup". A span represents a unit of work done in a distributed system, so by creating this span, you are defining a section of work that you want to track across your system.
+
+        Let's break down what each part of this code does:
+
+        1. `Span inventoryServiceLookup = tracer.nextSpan().name("InventoryServiceLookup");`
+
+        This line creates a new Span object with the name "InventoryServiceLookup". The `tracer.nextSpan()` call generates a new span that can be used to trace a section of your code.
+
+        2. `try (Tracer.SpanInScope spanInScope = tracer.withSpan(inventoryServiceLookup.start())) {`
+
+        This line does a few things:
+
+           - `inventoryServiceLookup.start()` starts the span. After this point, until the span is closed, the span will record the time taken to execute the work.
+
+           - `tracer.withSpan(...)` makes the started span the current span. It means that any new spans created within the scope of this span will be children of this span.
+
+           - `Tracer.SpanInScope spanInScope = ...` assigns the result of `tracer.withSpan(...)` to a variable. This object is AutoCloseable, which means when it goes out of scope (when the try block is exited), it will automatically close the span and stop timing.
+
+        The code you would place inside the try block represents the operations you want to include in the span. It could be a call to another microservice, a database query, or other business logic.
+
+        So, the effect of this code is to start a timed section of your application's execution named "InventoryServiceLookup". This span's timing will stop when the control exits the try-with-resources block. The span will be a part of the tracing data which you can use to analyze the performance and behavior of your application, especially in microservices based distributed systems.

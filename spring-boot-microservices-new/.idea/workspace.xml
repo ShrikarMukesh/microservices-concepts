@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f2b5281-75b7-4a5c-bfb8-3a1191547fed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CurlRequests" beforeDir="false" afterPath="$PROJECT_DIR$/CurlRequests" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/apigateway/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/apigateway/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-server/src/main/java/com/discoveryserver/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/src/main/java/com/discoveryserver/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/inventoryservice/InventoryServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/inventoryservice/InventoryServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/inventoryservice/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/inventoryservice/service/InventoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-imp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ms-imp.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/productservice/ProductServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/productservice/ProductServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/productservice/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/productservice/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/productservice/service/ParallelStreamExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/productservice/service/ParallelStreamExample.java" afterDir="false" />
-    </list>
+    <list default="true" id="4f2b5281-75b7-4a5c-bfb8-3a1191547fed" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,26 +37,26 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2B3mF2EZpupPAXRr22gloa9a7yZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/shrikar/2022-dev/springboot-test/spring-reddit-clone",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/shrikar/2022-dev/springboot-test/spring-reddit-clone&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.ApiGatewayApplication">
+}</component>
+  <component name="RunManager" selected="Application.InventoryServiceApplication">
     <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.apigateway.ApiGatewayApplication" />
       <module name="api-gateway" />
@@ -152,11 +137,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ProductServiceApplication" />
-        <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.InventoryServiceApplication" />
-        <item itemvalue="Application.ApiGatewayApplication" />
+        <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.DiscoveryServerApplication" />
+        <item itemvalue="Application.ProductServiceApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
       </list>
     </recent_temporary>
   </component>

@@ -57,8 +57,7 @@ public class OrderService {
         Span inventoryServiceLookup = tracer.nextSpan().name("InventoryServiceLookup");
 
         try (Tracer.SpanInScope spanInScope = tracer.withSpan(inventoryServiceLookup.start())) {
-            // Call Inventory Service, and place order if product is in
-            // stock
+            // Call Inventory Service, and place order if product is in stock
             InventoryResponse[] inventoryResponseArray = webClientBuilder.build().get()
                     .uri("http://inventory-service/api/inventory",
                             uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
@@ -70,6 +69,7 @@ public class OrderService {
                     .allMatch(InventoryResponse::isInStock);
 
             if (allProductsInStock) {
+                //Save Order to Repository
                 orderRepository.save(order);
                 kafkaTemplate.send("notification-topic", new OrderPlacedEvent(order.getOrderNumber())) ;
                 streamBridge.send("notificationEventSupplier-out-0",

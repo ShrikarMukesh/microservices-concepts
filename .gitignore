@@ -115,3 +115,4 @@ build/
 
 ### VS Code ###
 .vscode/
+spring-boot-microservices-new/.idea
