@@ -1,3 +1,4 @@
+<!--
 <configuration>
     <property name="LOGS" value="./logs" />
 
@@ -18,22 +19,23 @@
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
+            &lt;!&ndash; daily rollover &ndash;&gt;
             <fileNamePattern>${LOGS}/archived/spring-boot-logger-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 
-            <!-- keep 30 days' worth of history -->
+            &lt;!&ndash; keep 30 days' worth of history &ndash;&gt;
             <maxHistory>30</maxHistory>
 
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <!-- or whenever the file size reaches 10MB -->
+                &lt;!&ndash; or whenever the file size reaches 10MB &ndash;&gt;
                 <maxFileSize>10MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
     </appender>
 
-    <!-- LOG everything at INFO level -->
+    &lt;!&ndash; LOG everything at INFO level &ndash;&gt;
     <root level="info">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </root>
 </configuration>
+-->

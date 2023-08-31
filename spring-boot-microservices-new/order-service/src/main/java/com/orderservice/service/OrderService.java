@@ -71,6 +71,7 @@ public class OrderService {
             if (allProductsInStock) {
                 //Save Order to Repository
                 orderRepository.save(order);
+                //Send
                 kafkaTemplate.send("notification-topic", new OrderPlacedEvent(order.getOrderNumber())) ;
                 streamBridge.send("notificationEventSupplier-out-0",
                         MessageBuilder.withPayload(new OrderDto(order.getOrderNumber())).build());

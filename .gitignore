@@ -102,6 +102,20 @@ build/
 *.iws
 *.iml
 *.ipr
+# Ignore .idea workspace files
+/.idea/workspace.xml
+
+# Ignore Sonarlint files
+/.idea/sonarlint/issuestore/index.pb
+/.idea/sonarlint/securityhotspotstore/index.pb
+# Ignore all .pb files in .idea and its subdirectories
+/.idea/**/*.pb
+
+# Ignore all .xml files in .idea and its subdirectories
+/.idea/**/*.xml
+
+# Ignore all content in sonarlint directory
+/.idea/sonarlint/*
 
 ### NetBeans ###
 /nbproject/private/
@@ -115,4 +129,3 @@ build/
 
 ### VS Code ###
 .vscode/
-spring-boot-microservices-new/.idea
