@@ -19,7 +19,8 @@ public class SecurityConfig {
                         exchange.pathMatchers("/eureka/**")
                                 .permitAll()
                                 .anyExchange()
-                                .authenticated())
+                                .authenticated()
+                )
                 .oauth2ResourceServer(ServerHttpSecurity.OAuth2ResourceServerSpec::jwt);
         return serverHttpSecurity.build();
     }

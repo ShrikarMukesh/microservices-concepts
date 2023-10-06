@@ -4,9 +4,11 @@ which include:
 1. Assigning a unique trace id to every request to correlate logs between services.
 2. Adding a span id that represents work done in an individual service.
 3. Sending traces to a distributed tracing system for detailed visualization and analysis.
+
 Trace ID: Is an ID that is assigned to the whole journey of a request.It remains the same across all the services for a particular request journey.
 
-Span ID: Is an ID that is assigned to a particular unit of work, such as an HTTP request handled by a service, a database query, etc. It is unique for each operation and can change as the request traverses through different services.
+Span ID: Is an ID that is assigned to a particular unit of work, such as an HTTP request handled by a service, a database query, etc.
+   It is unique for each operation and can change as the request traverses through different services.
 
 To add Spring Cloud Sleuth to your Spring Boot project, you can add the following dependency:
 <dependency>
@@ -14,7 +16,7 @@ To add Spring Cloud Sleuth to your Spring Boot project, you can add the followin
   <artifactId>spring-cloud-starter-sleuth</artifactId>
 </dependency>
 
--------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Explanation:
 2021-07-29 12:34:56.789  INFO [myapp,5994471e1738d7f2,5994471e1738d7f2,true] 1 --- [nio-8080-exec-1] c.e.demo.MyRestController     : Hello from MyRestController
@@ -25,7 +27,8 @@ myapp is the name of the application.
 true means the span will be exported to a remote service for further analysis.
 By default, Sleuth does not export these traces to any backend, and they are only visible in the logs.
 If you want to visualize these traces, you might want to consider exporting the traces to a system like Zipkin. To do that, you would need to add a Zipkin starter to your project and configure the location of your Zipkin server.
---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 Custom Span Id Implementation:
  field: private final Tracer tracer;
         -->
